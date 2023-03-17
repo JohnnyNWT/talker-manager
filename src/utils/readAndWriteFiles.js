@@ -14,10 +14,10 @@ const readTalkerFile = async () => {
 
 const writeTalkerFile = async (post) => {
   try {
-    const arrayPosts = await readTalkerFile();
-    arrayPosts.push(post);
+    // const arrayPosts = await readTalkerFile();
+    // arrayPosts.push(post);
 
-    return await fs.writeFile('src/talker.json', JSON.stringify(arrayPosts, null, 2));
+    return await fs.writeFile('src/talker.json', JSON.stringify([post], null, 2));
   } catch (error) {
     const err = new Error('Error writing file');
     err.statusCode = 500;
