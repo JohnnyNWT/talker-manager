@@ -40,4 +40,23 @@ auth, verifyName, verifyAge, verifyTalk, verifyWatchedAt, verifyRate, async (req
   return res.status(201).json(newObj);
 });
 
+talkerRouter.put('/:id',
+auth, verifyName, verifyAge, verifyTalk, verifyWatchedAt, verifyRate, async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  const data = await readTalkerFile();
+  const obj = data.find((e) => e.id === Number(id));
+  if (!obj) {
+    return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  }
+  obj.name = body.name;
+  obj.age = body.age;
+  obj.talk.watchedAt = body.talk.watchedAt;
+  obj.talk.rate = body.talk.rate;
+
+  await writeTalkerFile(obj);
+
+  return res.status(200).json(obj);
+});
+
 module.exports = talkerRouter;

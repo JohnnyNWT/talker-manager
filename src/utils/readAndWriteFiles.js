@@ -25,23 +25,6 @@ const writeTalkerFile = async (post) => {
   }
 };
 
-// const changeBlogPostFile = async (post, id) => {
-//   try {
-//     const arrayPosts = await readTalkerFile();
-
-//     const postToUpdate = arrayPosts.filter(post.id === Number(id));
-//     postToUpdate = {
-//       postToUpdate,
-//       ...post
-//     }
-
-//     await fs.writeFile('', JSON.stringify(arrayPosts, null, 2));
-//     return postToUpdate;
-//   } catch (error) {
-//     return null;
-//   }
-// };
-
 module.exports = {
   readTalkerFile,
   writeTalkerFile,
