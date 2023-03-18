@@ -59,4 +59,12 @@ auth, verifyName, verifyAge, verifyTalk, verifyWatchedAt, verifyRate, async (req
   return res.status(200).json(obj);
 });
 
+talkerRouter.delete('/:id', auth, async (req, res) => {
+  const { id } = req.params;
+  const data = await readTalkerFile();
+  data.splice(id - 1, 1);
+  await writeTalkerFile(data);
+  return res.status(204).end();
+});
+
 module.exports = talkerRouter;
