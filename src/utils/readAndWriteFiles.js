@@ -14,7 +14,7 @@ const readTalkerFile = async () => {
 
 const writeTalkerFile = async (post) => {
   try {
-    // const arrayPosts = await readTalkerFile();
+    // const arrayPosts = await readTalkerFile()
     // arrayPosts.push(post);
 
     return await fs.writeFile('src/talker.json', JSON.stringify([post], null, 2));
